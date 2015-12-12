@@ -37,4 +37,4 @@ $bot->delWebhook();
 <br>
 <h3>Documentation</h3>
 
-<a href="http://doc.moonliightz.de/php-telegram-class/class-Telegram.html" target="_blank">http://doc.moonliightz.de/php-telegram-class/</a>
+<a href="http://doc.moonliightz.de/php-telegram-class/class-Telegram.html">http://doc.moonliightz.de/php-telegram-class/class-Telegram.html</a>
