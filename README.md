@@ -13,7 +13,7 @@ sendChatAction - chat actions e.g. "typing..." (see description) <br>
 setWebhook - set Bot webhook <br>
 delWebhook - delete Bot webhook <br><br>
 
-<h3>Sample Example</h3>
+<h3>Simple Example</h3>
 ```ruby
 <?php
 require_once('class.moonliightz.telegram.php');
