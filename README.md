@@ -9,6 +9,7 @@ sendAudio - send audio files <br>
 sendVideo - send video files <br>
 sendChatAction - chat actions e.g. "typing..." (see description) <br>
 kickChatMember - Benutzer aus eine Gruppe kicken <br>
+unbanChatMember	- Benutzer entsperren <br>
 sendKeyboard - display keyboard <br>
 hideKeyboard - fade out keyboard <br>
 setWebhook - set Bot webhook <br>
@@ -30,6 +31,7 @@ $bot->sendVideo(CHAT_ID, "video.mp4", "Beschreibung");
 $bot->sendChatAction(CHAT_ID, 1);
 
 $bot->kickChatMember(CHAT_ID, USER_ID);
+$bot->unbanChatMember(CHAT_ID, USER_ID);
 
 $bot->sendKeyboard(CHAT_ID, "Text", array( array( "Zeile1 Test1", "Zeile1 Test2" ), array( "Zeile2 Test3", "Zeile2 Test4" ) ));
 $bot->hideKeyboard(CHAT_ID, "Text");
