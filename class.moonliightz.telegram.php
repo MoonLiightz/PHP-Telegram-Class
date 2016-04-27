@@ -9,9 +9,10 @@
  * sendDocument 	- Dateien verschicken <br>
  * sendAudio		- Audios verschicken <br>
  * sendVideo		- Videos verschicken <br>
+ * sendChatAction	- Den Bot beispielsweise "tippt..." sagen lass (siehe Methoden beschreibung) <br>
+ * kickChatMember	- Benutzer aus eine Gruppe kicken <br>
  * sendKeyboard		- Auswahlfelder einblenden <br>
  * hideKeyboard		- Auswahlfelder ausblenden <br>
- * sendChatAction	- Den Bot beispielsweise "tippt..." sagen lass (siehe Methoden beschreibung) <br>
  * setWebhook		- Webhook für den Bot setzen <br>
  * delWebhook		- Webhook löschen
  *
@@ -26,11 +27,15 @@
  * $bot->sendPhoto(CHAT_ID, "storageplan.png", "Bildunterschrift");
  * $bot->sendDocument(CHAT_ID, "storageplan.png");
  * $bot->sendAudio(CHAT_ID, "BVB.mp3", "Interpret", "Titel");
+ * $bot->sendVideo(CHAT_ID, "video.mp4", "Beschreibung");
+ *
+ * $bot->sendChatAction(CHAT_ID, 1);
+ *
+ * $bot->kickChatMember(CHAT_ID, USER_ID);
  *
  * $bot->sendKeyboard(CHAT_ID, "Text", array( array( "Zeile1 Test1", "Zeile1 Test2" ), array( "Zeile2 Test3", "Zeile2 Test4" ) ));
  * $bot->hideKeyboard(CHAT_ID, "Text");
  *
- * $bot->sendChatAction(CHAT_ID, 1);
  *
  * $bot->setWebhook(URL);
  * $bot->delWebhook();
@@ -39,8 +44,8 @@
  *
  * @author      MoonLiightz <info@moonliightz.de>
  * @category	Telegram Bot
- * @link		https://moonliightz.de/produkt/php-telegram-klasse/
- * @version		0.79 [Beta Version]
+ * @link		https://github.com/MoonLiightz/PHP-Telegram-Class
+ * @version		1.3
  * @since		21.10.2015
  */
 
@@ -343,6 +348,40 @@ class Telegram
 		else
 			$result = Array("success" => 1,	"info"	=>	"Chat Action send");
 		
+		return $result;
+	}
+	
+	/**
+	* User aus Gruppe kicken
+	*
+	* <b>Output:</b><br>
+	* <code>
+	*  Array
+	*  (
+	*      [success] => 1 oder 0
+	*      [info]	=> Zeigt Info oder Fehlermeldung
+	*  )
+	* </code>
+	*
+	* @param	string	$chat_id	required	ID des Telegram Chats
+	* @param	integer	$user_id	required	ID des Users der gekickt werden soll
+	* @return	array
+	* @access public
+	*/
+	public function kickChatMember($chat_id, $user_id)
+	{
+		$action = 'kickChatMember';
+		$param = array(
+			'chat_id'					=>	$chat_id,
+			'user_id'					=>	$user_id
+		);
+
+		$res = $this->send($action, $param);
+		if (!$res['ok'])
+			$result = Array("success" => 0, "info"	=>	"Error: " . $res['description']);
+		else
+			$result = Array("success" => 1,	"info"	=>	"Member kicked");
+
 		return $result;
 	}
 	

@@ -7,9 +7,10 @@ sendPhoto - send pictures <br>
 sendDocument - send files <br>
 sendAudio - send audio files <br>
 sendVideo - send video files <br>
+sendChatAction - chat actions e.g. "typing..." (see description) <br>
+kickChatMember - Benutzer aus eine Gruppe kicken <br>
 sendKeyboard - display keyboard <br>
 hideKeyboard - fade out keyboard <br>
-sendChatAction - chat actions e.g. "typing..." (see description) <br>
 setWebhook - set Bot webhook <br>
 delWebhook - delete Bot webhook <br><br>
 
@@ -24,11 +25,14 @@ $bot->sendMessage(CHAT_ID, "Text");
 $bot->sendPhoto(CHAT_ID, "storageplan.png", "Bildunterschrift");
 $bot->sendDocument(CHAT_ID, "storageplan.png");
 $bot->sendAudio(CHAT_ID, "BVB.mp3", "Interpret", "Titel");
+$bot->sendVideo(CHAT_ID, "video.mp4", "Beschreibung");
+
+$bot->sendChatAction(CHAT_ID, 1);
+
+$bot->kickChatMember(CHAT_ID, USER_ID);
 
 $bot->sendKeyboard(CHAT_ID, "Text", array( array( "Zeile1 Test1", "Zeile1 Test2" ), array( "Zeile2 Test3", "Zeile2 Test4" ) ));
 $bot->hideKeyboard(CHAT_ID, "Text");
-
-$bot->sendChatAction(CHAT_ID, 1);
 
 $bot->setWebhook(URL);
 $bot->delWebhook();
