@@ -419,6 +419,7 @@ class Telegram
 			$result = Array("success" => 1,	"info"	=>	"Member kicked");
 
 		return $result;
+	}
 	
 	/**
 	* Auswahl Keyboard zeigen
