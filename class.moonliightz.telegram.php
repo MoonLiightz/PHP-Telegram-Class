@@ -118,19 +118,25 @@ class Telegram
 	*  )
 	* </code>
 	*
-	* @param	string	$chat_id	required	ID des Telegram Chats
-	* @param	string	$text		required	Text der gesendet werden soll
-	* @param	boolean	$preview	optinal		Legt fest ob Webpreview deaktivert werden soll
+	* @param	string	$chat_id					required	ID des Telegram Chats
+	* @param	string	$text						required	Text der gesendet werden soll
+	* @param	string	$parse_mode					optinal		Markdown oder HTML für z.B. fettgedruckte Texte
+	* @param	boolean	$disable_web_page_preview	optinal		Legt fest ob Webpreview deaktivert werden soll
+	* @param	boolean	$disable_notification		optinal		Benachrichtigung deaktivieren
+	* @param	integer	$reply_to_message_id		optinal		Nachrichten ID für den "Antworten" Modus (reply)
 	* @return	array
 	* @access public
 	*/
-	public function sendMessage($chat_id, $text, $preview = false)
+	public function sendMessage($chat_id, $text, $parse_mode = NULL,  $disable_web_page_preview = false, $disable_notification = false, $reply_to_message_id = NULL)
 	{
 		$action = 'sendMessage';
 		$param = array(
 			'chat_id'					=>	$chat_id,
 			'text'						=>	$text,
-			'disable_web_page_preview'	=>	$preview
+			'parse_mode'				=>	$parse_mode,
+			'disable_web_page_preview'	=>	$disable_web_page_preview,
+			'disable_notification'		=>	$disable_notification,
+			'reply_to_message_id'		=>	$reply_to_message_id
 		);
 		
 		$res = $this->send($action, $param);
